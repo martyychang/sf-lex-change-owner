@@ -11,7 +11,9 @@
       leadIds.push(lead.Id);
     });
 
-    helper.assignOwner(component, ownerId, leadIds);
+    helper.assignOwner(component, ownerId, leadIds, function() {
+      history.back();
+    });
   },
   handleInit : function(component, event, helper) {
     helper.refreshOwnerOptions(component, helper);

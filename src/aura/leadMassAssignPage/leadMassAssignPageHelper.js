@@ -1,5 +1,7 @@
 ({
-  assignOwner : function(component, ownerId, leadIds) {
+  assignOwner : function(component, ownerId, leadIds,
+                         successCallback, errorCallback) {
+    
     var action = component.get("c.assignOwner");
 
     action.setParams({
@@ -11,11 +13,20 @@
       console.log("response: %o", response);
 
       if (response.getState() === "SUCCESS") {
-        alert("success");
+        if (successCallback) {
+          successCallback();
+        }
+        else {
+          alert("success");
+        }
       }
       else if (response.getState() === "ERROR") {
-        alert("error");
-        console.log("error: %o", response.getError());
+        if (errorCallback) {
+          errorCallback();
+        }
+        else {
+          alert("error");
+        }
       }
     });
 
