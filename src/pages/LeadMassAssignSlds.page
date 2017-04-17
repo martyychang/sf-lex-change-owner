@@ -1,14 +1,17 @@
 <apex:page standardController="Lead" recordSetVar="leads"
-           standardStylesheets="false" showHeader="false" sidebar="false">
+           standardStylesheets="false" showHeader="false" sidebar="false"
+           docType="html-5.0" applyBodyTag="false">
   
-  <!-- Enables Lightning Out for this page -->
-  <apex:includeLightning />
+<!-- Enables Lightning Out for this page -->
+<apex:includeLightning />
 
-  <!-- CSS fixes for LEX serving Visualforce inside an iframe -->
-  <apex:stylesheet value="{!$Resource.VisualforceSldsStyles}" />
+<!-- CSS fixes for LEX serving Visualforce inside an iframe -->
+<apex:stylesheet value="{!$Resource.VisualforceSldsStyles}" />
+
+<body>
 
   <!-- Placeholder for Lightning component to be rendered -->
-  <div id="lightning" />
+  <div id="lightning"></div>
 
   <!-- Load the desired Lightning component -->
   <script>
@@ -28,4 +31,5 @@
       }, "lightning");
     });
   </script>
+</body>
 </apex:page>
