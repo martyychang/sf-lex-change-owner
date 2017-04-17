@@ -18,7 +18,7 @@
     $Lightning.use("c:visualforceApp", function() {
       $Lightning.createComponent("c:leadMassAssignPage", {
         leads: [
-          <apex:repeat value="{!leads}" var="theLead">
+          <apex:repeat value="{!selected}" var="theLead">
             {
               Id: "{!theLead.Id}",
               Name: "{!theLead.Name}",
