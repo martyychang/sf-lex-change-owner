@@ -21,3 +21,5 @@ After deploying this package to your org, all you need to do is create a
 
 Then, edit the Leads List View search layout, and remove the standard
 **Change Owner** button but add your newly created custom button.
+
+![Lead Mass Action Change Owner with Lightning Out for Visualforce in Lightning Experience (Sprint '17)](http://i.imgur.com/KaHdN4d.png)
