@@ -69,9 +69,9 @@
       </tr>
     </thead>
     <tbody>
-      <aura:iteration items="{!v.leads}" var="theLead">
+      <aura:iteration items="{!v.leads}" var="theLead" indexVar="i">
         <tr>
-          <th scope="row">0</th>
+          <th scope="row">{!i + 1}</th>
           <td>
             <label class="slds-checkbox">
               <input type="checkbox" checked="true" disabled="true" />
