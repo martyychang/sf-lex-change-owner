@@ -1,0 +1,89 @@
+<aura:component controller="LeadMassAssignController" >
+    <aura:attribute name="availableUsers" type="User[]" default="[]" />
+    <aura:attribute name="leads" type="Lead[]" default="[]" 
+                      description="Leads passed from a StandardSetController" />
+  <aura:attribute name="ownerId" type="String" default="" />
+  
+  <aura:handler name="init" value="{!this}" action="{!c.handleInit}" />
+
+  <!-- PAGE HEADER -->
+  <div class="slds-page-header" role="banner">
+    <div class="slds-grid">
+      <div class="slds-col slds-has-flexi-truncate">
+      
+        <!-- HEADING AREA -->
+        <div class="slds-media slds-no-space slds-grow">
+          <div class="slds-media__figure">
+            <lightning:icon iconName="standard:lead" alternativeText="Lead Icon" />
+          </div>
+          <div class="slds-media__body">
+            <p class="slds-text-title--caps slds-line-height--reset">Leads</p>
+            <h1 class="slds-page-header__title slds-truncate"
+                title="Change Owner">Change Owner</h1>
+          </div>
+        </div>
+        <!-- / HEADING AREA -->
+
+      </div>
+      <div class="slds-col slds-no-flex slds-grid slds-align-top">
+        <form class="slds-form--inline">
+          <div class="slds-form-element">
+            <lightning:select name="owner" label="New Owner" value="{!v.ownerId}">
+                <option value="" text="--None--"></option>
+                <aura:iteration items="{!v.availableUsers}" var="user">
+                    <option value="{!user.Id}" text="{!user.Name}"></option>
+                </aura:iteration>
+            </lightning:select>
+          </div>
+          <div class="slds-form-element">
+            <button class="slds-button slds-button--brand"
+                    type="button" onclick="{!c.handleAssignButtonPress}">Assign</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="slds-grid">
+      <div class="slds-col slds-align-bottom slds-p-top--small">
+        <p class="slds-text-body--small slds-page-header__info">
+          Select a new owner, then tap <b>Assign</b>
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- / PAGE HEADER -->
+
+  <!-- DATA TABLE -->
+  <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-no-row-hover">
+    <thead>
+      <tr class="slds-text-heading--label">
+        <th scope="col" style="width:60px"><!-- Row Number --></th>
+        <th scope="col" style="width:32px">
+          <label class="slds-checkbox">
+            <input type="checkbox" checked="true" disabled="true" />
+            <span class="slds-checkbox--faux"></span>
+          </label>
+        </th>
+        <th scope="col">Name</th>
+        <th scope="col">Owner Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <aura:iteration items="{!v.leads}" var="theLead">
+        <tr>
+          <th scope="row">0</th>
+          <td>
+            <label class="slds-checkbox">
+              <input type="checkbox" checked="true" disabled="true" />
+              <span class="slds-checkbox--faux"></span>
+            </label>
+          </td>
+          <td>{!theLead.Name}</td>
+          <td>{!theLead.Owner.Name}</td>
+        </tr>
+      </aura:iteration>
+    </tbody>
+  </table>
+  <!-- / DATA TABLE -->
+
+</aura:component>

@@ -1,0 +1,31 @@
+<apex:page standardController="Lead" recordSetVar="leads"
+           standardStylesheets="false" showHeader="false" sidebar="false">
+  
+  <!-- Enables Lightning Out for this page -->
+  <apex:includeLightning />
+
+  <!-- CSS fixes for LEX serving Visualforce inside an iframe -->
+  <apex:stylesheet value="{!$Resource.VisualforceSldsStyles}" />
+
+  <!-- Placeholder for Lightning component to be rendered -->
+  <div id="lightning" />
+
+  <!-- Load the desired Lightning component -->
+  <script>
+    $Lightning.use("c:visualforceApp", function() {
+      $Lightning.createComponent("c:leadMassAssignPage", {
+        leads: [
+          <apex:repeat value="{!leads}" var="theLead">
+            {
+              Id: "{!theLead.Id}",
+              Name: "{!theLead.Name}",
+              Owner: {
+                Name: "{!theLead.Owner.Name}"
+              }
+            },
+          </apex:repeat>
+        ]
+      }, "lightning");
+    });
+  </script>
+</apex:page>
