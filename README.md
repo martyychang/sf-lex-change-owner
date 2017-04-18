@@ -7,6 +7,8 @@ in Lightning Experience.
 
 ## Installation
 
+[![Deploy to Salesforce](https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/src/main/webapp/resources/img/deploy.png)](https://githubsfdeploy.herokuapp.com/?owner=martyychang&repo=sf-lex-change-owner)
+
 After deploying this package to your org, all you need to do is create a
 **New Custom Button or Link** on the Lead object, configured as follows.
 
